@@ -8,23 +8,45 @@
 
 import UIKit
 
-class ViewController2: UIViewController {
+class ViewController2: UIViewController, UITextViewDelegate {
+    
+    // UI部品の宣言
+    @IBOutlet weak var segmentController: UISegmentedControl!
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var postButton: UIButton!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // UI部品のボタンとテキストフィールドの角を丸くする
+        postButton.layer.cornerRadius = 4
+        textView.layer.cornerRadius = 4
+        
+        // textFieldのplacefolderの設定
+        textView.text = "ここに新規投稿を書き込んで下さい"
+        textView.textColor = UIColor.lightGray
+        textView.delegate = self
+        
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // textFieldがタップされて編集が始まった時にplacefolderを削除して文字の色をグレーに変える
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
+        textView.textColor = UIColor.darkGray
     }
-    */
+    
+    
+    @IBAction func segmentChanged(_ sender: Any) {
+    }
+    
+    @IBAction func postButtonTapped(_ sender: Any) {
+    }
+    
+    
+    
+    
 
 }

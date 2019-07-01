@@ -21,7 +21,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Firestore1" id="ntn-hF-z12">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus2" id="IGW-zX-kkl">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus7" id="IGW-zX-kkl">
                             <connections>
                                 <segue destination="rFU-P6-Vf0" kind="show" id="YCU-PL-Ipg"/>
                             </connections>
@@ -51,6 +51,9 @@
                                     <segment title="crazy"/>
                                 </segments>
                                 <color key="tintColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="rFU-P6-Vf0" eventType="valueChanged" id="SUi-x6-0bc"/>
+                                </connections>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WQU-3K-r22">
                                 <rect key="frame" x="20" y="160" width="335" height="30"/>
@@ -78,6 +81,9 @@
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Post"/>
+                                <connections>
+                                    <action selector="postButtonTapped:" destination="rFU-P6-Vf0" eventType="touchUpInside" id="5ow-iq-W8h"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -97,6 +103,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="onm-UU-LGW"/>
                     </view>
+                    <connections>
+                        <outlet property="postButton" destination="m2e-6k-o42" id="jMm-f2-cZv"/>
+                        <outlet property="segmentController" destination="RvO-N1-VMn" id="JJr-2O-WFo"/>
+                        <outlet property="textView" destination="opH-Id-z5x" id="Jhy-Gr-c38"/>
+                        <outlet property="username" destination="WQU-3K-r22" id="n7O-Bj-Zzc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hJT-sR-UwQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -127,6 +139,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="plus2" width="40" height="40"/>
+        <image name="plus7" width="80" height="80"/>
     </resources>
 </document>
