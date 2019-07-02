@@ -8,6 +8,13 @@
 
 import UIKit
 
+enum ThoughtCategory: String {
+    case serious = "serious"
+    case funny = "funny"
+    case crazy = "crazy"
+    case popular = "popular"
+}
+
 class ViewController1: UIViewController {
 
     override func viewDidLoad() {

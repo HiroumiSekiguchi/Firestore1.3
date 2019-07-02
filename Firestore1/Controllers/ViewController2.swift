@@ -17,8 +17,8 @@ class ViewController2: UIViewController, UITextViewDelegate {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var postButton: UIButton!
     
-    // Firebaseにデータを入れる用の変数を宣言
-    var selectedCategory = "funny"
+    // Firebaseにデータを入れる用の変数を宣言（デフォルトは「funny」で）
+    var selectedCategory = ThoughtCategory.funny.rawValue
     
 
     override func viewDidLoad() {
@@ -44,18 +44,29 @@ class ViewController2: UIViewController, UITextViewDelegate {
     
     
     @IBAction func segmentChanged(_ sender: Any) {
+        
+        switch segmentController.selectedSegmentIndex {
+        case 0:
+            selectedCategory = ThoughtCategory.funny.rawValue
+        case 1:
+            selectedCategory = ThoughtCategory.serious.rawValue
+        default:
+            selectedCategory = ThoughtCategory.crazy.rawValue
+        }
+        
     }
     
     
     // ここでFirebaseにデータを送信
     @IBAction func postButtonTapped(_ sender: Any) {
-        Firestore.firestore().collection("thoughts").addDocument(data: [
-            "category" : selectedCategory,
-            "numComments" : 0,
-            "numLikes" : 0,
-            "thoughtText" : textView.text!,
-            "timestamp" : FieldValue.serverTimestamp(),
-            "username" : username.text!
+        guard let userName = username.text else { return }
+        Firestore.firestore().collection(THOUGHTS).addDocument(data: [
+            CATEGORY : selectedCategory,
+            NUM_COMMENTS : 0,
+            NUM_LIKES : 0,
+            THOUGHT_TEXT : textView.text!,
+            TIMESTAMP : FieldValue.serverTimestamp(),
+            USERNAME : userName
         ]) { (error) in
             if let err = error {
                 debugPrint("エラーが発生しました：\(err)")

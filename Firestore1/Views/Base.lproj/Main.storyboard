@@ -20,13 +20,15 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Firestore1" id="ntn-hF-z12">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus7" width="20" id="IGW-zX-kkl">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plusicon2" width="20" id="IGW-zX-kkl">
                             <connections>
                                 <segue destination="rFU-P6-Vf0" kind="show" id="YCU-PL-Ipg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,18 +63,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="opH-Id-z5x">
-                                <rect key="frame" x="20" y="202" width="335" height="100"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.1485712756849315" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="mtv-Ze-65N"/>
-                                </constraints>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2e-6k-o42">
-                                <rect key="frame" x="147" y="310" width="80" height="35"/>
+                                <rect key="frame" x="137" y="335" width="101" height="47"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="B9t-xS-kT9"/>
@@ -85,6 +77,16 @@
                                     <action selector="postButtonTapped:" destination="rFU-P6-Vf0" eventType="touchUpInside" id="5ow-iq-W8h"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="opH-Id-z5x">
+                                <rect key="frame" x="20" y="214" width="335" height="100"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.1485712756849315" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="mtv-Ze-65N"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -112,7 +114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hJT-sR-UwQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1878" y="137"/>
+            <point key="canvasLocation" x="1877.5999999999999" y="136.69950738916256"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6TD-lm-sOy">
@@ -139,6 +141,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="plus7" width="80" height="80"/>
+        <image name="plusicon2" width="30" height="30"/>
     </resources>
 </document>
