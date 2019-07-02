@@ -21,7 +21,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Firestore1" id="ntn-hF-z12">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus7" id="IGW-zX-kkl">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus7" width="20" id="IGW-zX-kkl">
                             <connections>
                                 <segue destination="rFU-P6-Vf0" kind="show" id="YCU-PL-Ipg"/>
                             </connections>

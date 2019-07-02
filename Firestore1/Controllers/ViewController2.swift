@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController2: UIViewController, UITextViewDelegate {
     
@@ -15,6 +16,9 @@ class ViewController2: UIViewController, UITextViewDelegate {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var postButton: UIButton!
+    
+    // Firebaseにデータを入れる用の変数を宣言
+    var selectedCategory = "funny"
     
 
     override func viewDidLoad() {
@@ -42,7 +46,27 @@ class ViewController2: UIViewController, UITextViewDelegate {
     @IBAction func segmentChanged(_ sender: Any) {
     }
     
+    
+    // ここでFirebaseにデータを送信
     @IBAction func postButtonTapped(_ sender: Any) {
+        Firestore.firestore().collection("thoughts").addDocument(data: [
+            "category" : selectedCategory,
+            "numComments" : 0,
+            "numLikes" : 0,
+            "thoughtText" : textView.text!,
+            "timestamp" : FieldValue.serverTimestamp(),
+            "username" : username.text!
+        ]) { (error) in
+            if let err = error {
+                debugPrint("エラーが発生しました：\(err)")
+            } else {
+                self.navigationController?.popViewController(animated: true)
+                print(self.textView.text!)
+            }
+        }
+        
+        
+        
     }
     
     
