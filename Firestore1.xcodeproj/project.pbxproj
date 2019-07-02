@@ -15,6 +15,7 @@
 		1E96E8F022CA01F000B0FCB6 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E96E8EF22CA01F000B0FCB6 /* ViewController2.swift */; };
 		1E96E8F422CB351200B0FCB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E96E8F322CB351200B0FCB6 /* GoogleService-Info.plist */; };
 		1E96E8F722CB44E100B0FCB6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E96E8F622CB44E100B0FCB6 /* Constants.swift */; };
+		1E96E8F922CB5BB200B0FCB6 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E96E8F822CB5BB200B0FCB6 /* Thought.swift */; };
 		EF492AEA83CFD32EF206DE03 /* Pods_Firestore1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01377D5F1E74E9D61B45DACD /* Pods_Firestore1.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		1E96E8EF22CA01F000B0FCB6 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		1E96E8F322CB351200B0FCB6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1E96E8F622CB44E100B0FCB6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1E96E8F822CB5BB200B0FCB6 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		82D61FE03A8ADBC1F3698F25 /* Pods-Firestore1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Firestore1.debug.xcconfig"; path = "Target Support Files/Pods-Firestore1/Pods-Firestore1.debug.xcconfig"; sourceTree = "<group>"; };
 		F1DBDAC38C20222EFFC7E637 /* Pods-Firestore1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Firestore1.release.xcconfig"; path = "Target Support Files/Pods-Firestore1/Pods-Firestore1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +119,7 @@
 		1E96E8EE22C9FEB000B0FCB6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1E96E8F822CB5BB200B0FCB6 /* Thought.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E96E8DA22C8F2F800B0FCB6 /* ViewController1.swift in Sources */,
+				1E96E8F922CB5BB200B0FCB6 /* Thought.swift in Sources */,
 				1E96E8D822C8F2F800B0FCB6 /* AppDelegate.swift in Sources */,
 				1E96E8F022CA01F000B0FCB6 /* ViewController2.swift in Sources */,
 				1E96E8F722CB44E100B0FCB6 /* Constants.swift in Sources */,

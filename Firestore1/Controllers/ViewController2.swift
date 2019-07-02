@@ -12,10 +12,10 @@ import Firebase
 class ViewController2: UIViewController, UITextViewDelegate {
     
     // UI部品の宣言
-    @IBOutlet weak var segmentController: UISegmentedControl!
-    @IBOutlet weak var username: UITextField!
-    @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet private weak var segmentController: UISegmentedControl!
+    @IBOutlet private weak var username: UITextField!
+    @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private weak var postButton: UIButton!
     
     // Firebaseにデータを入れる用の変数を宣言（デフォルトは「funny」で）
     var selectedCategory = ThoughtCategory.funny.rawValue
