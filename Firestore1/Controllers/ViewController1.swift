@@ -31,6 +31,10 @@ class ViewController1: UIViewController, UITableViewDelegate, UITableViewDataSou
         tableView.delegate = self
         tableView.dataSource = self
         
+        // セルの高さのデフォルト指定とフレキシブル設定
+        tableView.estimatedRowHeight = 90
+        tableView.rowHeight = UITableView.automaticDimension
+        
     }
     
     
@@ -41,13 +45,17 @@ class ViewController1: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CellController {
+            
+            cell.configureCell(thoughty: thoughtsArray[indexPath.row])
+            
+            return cell
+            
+        } else { return UITableViewCell() } // セルが存在しなかった場合
         
     }
     
-    // Firebaseから取得するモデルを作る12分あたりのところから。
+    
     
 }
 

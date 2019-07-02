@@ -41,7 +41,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="100" id="KgY-Cn-Pd6">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="100" id="KgY-Cn-Pd6" customClass="CellController" customModule="Firestore1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KgY-Cn-Pd6" id="RYt-KS-7Ar">
@@ -85,6 +85,13 @@
                                                 <constraint firstItem="bcH-nN-EKi" firstAttribute="centerY" secondItem="kVN-qO-F02" secondAttribute="centerY" id="reG-db-bMY"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="likeImage" destination="fzK-xf-XNH" id="VIc-oF-qV8"/>
+                                            <outlet property="numLikesLabel" destination="M1q-tH-2oA" id="xVD-ey-bMM"/>
+                                            <outlet property="thoughtTextLabel" destination="Md7-Jb-gXp" id="t2I-Wb-Ne6"/>
+                                            <outlet property="timestampLabel" destination="bcH-nN-EKi" id="BdM-ub-7Cz"/>
+                                            <outlet property="usernameLabel" destination="kVN-qO-F02" id="zlW-xK-ry0"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
