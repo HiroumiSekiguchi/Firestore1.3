@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 enum ThoughtCategory: String {
     case serious = "serious"
@@ -23,6 +24,11 @@ class ViewController1: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     // 投稿を格納する配列を宣言
     private var thoughtsArray = [Thought]()
+    
+    // Firebaseからデータを取ってくる記述の一部
+    var thoughtsCollectionRef: CollectionReference
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +40,28 @@ class ViewController1: UIViewController, UITableViewDelegate, UITableViewDataSou
         // セルの高さのデフォルト指定とフレキシブル設定
         tableView.estimatedRowHeight = 90
         tableView.rowHeight = UITableView.automaticDimension
+        
+        // Firebaseの参照元を指定
+        thoughtsCollectionRef = Firestore.firestore().collection(THOUGHTS)
+        
+    }
+    
+    
+    // ☆☆☆viewWillAppearの中でFirebaseからデータを取得
+    override func viewWillAppear(_ animated: Bool) {
+        
+        thoughtsCollectionRef.getDocuments { (snapshot, error) in
+            if let err = error {
+                debugPrint("データの取得エラー：\(err)")
+            } else {
+                guard let snap = snapshot else { return }
+                for document in snap.documents {
+                    print(document.data())
+                }
+            }
+        }
+        
+        
         
     }
     

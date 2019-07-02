@@ -10,7 +10,7 @@ import Foundation
 
 class Thought {
     
-    private(set) var category = String()
+    private(set) var category = "funny"
     private(set) var numComments = Int()
     private(set) var numLikes = Int()
     private(set) var thoughtText = String()
