@@ -26,7 +26,7 @@ class ViewController1: UIViewController, UITableViewDelegate, UITableViewDataSou
     private var thoughtsArray = [Thought]()
     
     // Firebaseからデータを取ってくる記述の一部
-    var thoughtsCollectionRef: CollectionReference
+    var thoughtsCollectionRef: CollectionReference!
     
     
 
@@ -56,8 +56,21 @@ class ViewController1: UIViewController, UITableViewDelegate, UITableViewDataSou
             } else {
                 guard let snap = snapshot else { return }
                 for document in snap.documents {
-                    print(document.data())
+                    let data = document.data()
+                    let username = data[USERNAME] as? String ?? "匿名ユーザー"
+                    let thoughtText = data[THOUGHT_TEXT] as? String ?? ""
+                    let numLikes = data[NUM_LIKES] as? Int ?? 0
+                    let numComments = data[NUM_COMMENTS] as? Int ?? 0
+                    let timestamp = data[TIMESTAMP] as? Date ?? Date()
+                    let documentId = document.documentID
+                    
+                    let newThought = Thought(numComments: numComments, numLikes: numLikes, thoughtText: thoughtText, timestamp: timestamp, username: username, documentId: documentId)
+                    
+                    self.thoughtsArray.append(newThought)
                 }
+                
+                self.tableView.reloadData()
+                
             }
         }
         
