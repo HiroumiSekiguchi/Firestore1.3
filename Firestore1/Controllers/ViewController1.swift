@@ -22,12 +22,14 @@ class ViewController1: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet private weak var segmentController: UISegmentedControl!
     @IBOutlet private weak var tableView: UITableView!
     
+    var selectedCategory = ThoughtCategory.funny.rawValue
+    
     // 投稿を格納する配列を宣言
     private var thoughtsArray = [Thought]()
     
-    // Firebaseからデータを取ってくる記述の一部
+    // Firebaseからデータを取ってくる記述の一部（ここではRefを作っている）
     var thoughtsCollectionRef: CollectionReference!
-    
+    private var thoughtsListner: ListenerRegistration!
     
 
     override func viewDidLoad() {
@@ -49,11 +51,31 @@ class ViewController1: UIViewController, UITableViewDelegate, UITableViewDataSou
         
     }
     
+    @IBAction func categoryChanged(_ sender: Any) {
+        
+        switch segmentController.selectedSegmentIndex {
+        case 0:
+            selectedCategory = ThoughtCategory.funny.rawValue
+        case 1:
+            selectedCategory = ThoughtCategory.serious.rawValue
+        case 2:
+            selectedCategory = ThoughtCategory.crazy.rawValue
+        default:
+            selectedCategory = ThoughtCategory.popular.rawValue
+        }
+        
+        thoughtsListner.remove()
+        setListner()
+        
+    }
     
     // ☆☆☆viewWillAppearの中でFirebaseからデータを取得
     override func viewWillAppear(_ animated: Bool) {
-        
-        thoughtsCollectionRef.addSnapshotListener { (snapshot, error) in
+        setListner()
+    }
+    
+    func setListner() {
+        thoughtsListner = thoughtsCollectionRef.whereField(CATEGORY, isEqualTo: selectedCategory).addSnapshotListener { (snapshot, error) in
             if let err = error {
                 debugPrint("データの取得エラー：\(err)")
             } else {
@@ -74,41 +96,13 @@ class ViewController1: UIViewController, UITableViewDelegate, UITableViewDataSou
                     
                     self.thoughtsArray.append(newThought)
                 }
-                
                 self.tableView.reloadData()
-                
             }
         }
-        
-//        thoughtsCollectionRef.getDocuments { (snapshot, error) in
-//            if let err = error {
-//                debugPrint("データの取得エラー：\(err)")
-//            } else {
-//                // 配列を初期化
-//                self.thoughtsArray = [Thought]()
-//
-//                guard let snap = snapshot else { return }
-//                for document in snap.documents {
-//                    let data = document.data()
-//                    let username = data[USERNAME] as? String ?? "匿名ユーザー"
-//                    let thoughtText = data[THOUGHT_TEXT] as? String ?? ""
-//                    let numLikes = data[NUM_LIKES] as? Int ?? 0
-//                    let numComments = data[NUM_COMMENTS] as? Int ?? 0
-//                    let timestamp = data[TIMESTAMP] as? Date ?? Date()
-//                    let documentId = document.documentID
-//
-//                    let newThought = Thought(numComments: numComments, numLikes: numLikes, thoughtText: thoughtText, timestamp: timestamp, username: username, documentId: documentId)
-//
-//                    self.thoughtsArray.append(newThought)
-//                }
-//
-//                self.tableView.reloadData()
-//
-//            }
-//        }
-        
-        
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        thoughtsListner.remove()
     }
     
     
