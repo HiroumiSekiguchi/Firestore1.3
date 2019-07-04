@@ -11,11 +11,12 @@ import UIKit
 class CellController: UITableViewCell {
 
     // セル内のUI部品の宣言
+    
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var timestampLabel: UILabel!
-    @IBOutlet weak var thoughtTextLabel: UILabel!
-    @IBOutlet weak var likeImage: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var numLikesLabel: UILabel!
+    
     
     
     override func awakeFromNib() {
@@ -25,7 +26,10 @@ class CellController: UITableViewCell {
     
     // セルを構築するメソッドを宣言
     func configureCell(thoughty: Thought) {
-        
+        usernameLabel.text = thoughty.username
+//        dateLabel.text = thoughty.timestamp as? String
+        contentLabel.text = thoughty.thoughtText
+        numLikesLabel.text = String(thoughty.numLikes)
     }
     
 

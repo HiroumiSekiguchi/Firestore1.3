@@ -44,16 +44,22 @@ class ViewController1: UIViewController, UITableViewDelegate, UITableViewDataSou
         // Firebaseの参照元を指定
         thoughtsCollectionRef = Firestore.firestore().collection(THOUGHTS)
         
+        // 確認用のでリロード
+        tableView.reloadData()
+        
     }
     
     
     // ☆☆☆viewWillAppearの中でFirebaseからデータを取得
     override func viewWillAppear(_ animated: Bool) {
         
-        thoughtsCollectionRef.getDocuments { (snapshot, error) in
+        thoughtsCollectionRef.addSnapshotListener { (snapshot, error) in
             if let err = error {
                 debugPrint("データの取得エラー：\(err)")
             } else {
+                // 配列を初期化
+                self.thoughtsArray = [Thought]()
+                
                 guard let snap = snapshot else { return }
                 for document in snap.documents {
                     let data = document.data()
@@ -74,19 +80,50 @@ class ViewController1: UIViewController, UITableViewDelegate, UITableViewDataSou
             }
         }
         
+//        thoughtsCollectionRef.getDocuments { (snapshot, error) in
+//            if let err = error {
+//                debugPrint("データの取得エラー：\(err)")
+//            } else {
+//                // 配列を初期化
+//                self.thoughtsArray = [Thought]()
+//
+//                guard let snap = snapshot else { return }
+//                for document in snap.documents {
+//                    let data = document.data()
+//                    let username = data[USERNAME] as? String ?? "匿名ユーザー"
+//                    let thoughtText = data[THOUGHT_TEXT] as? String ?? ""
+//                    let numLikes = data[NUM_LIKES] as? Int ?? 0
+//                    let numComments = data[NUM_COMMENTS] as? Int ?? 0
+//                    let timestamp = data[TIMESTAMP] as? Date ?? Date()
+//                    let documentId = document.documentID
+//
+//                    let newThought = Thought(numComments: numComments, numLikes: numLikes, thoughtText: thoughtText, timestamp: timestamp, username: username, documentId: documentId)
+//
+//                    self.thoughtsArray.append(newThought)
+//                }
+//
+//                self.tableView.reloadData()
+//
+//            }
+//        }
+        
         
         
     }
     
     
     // ☆☆☆以下、TableViewについて☆☆☆ //
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return thoughtsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CellController {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CellController {
             
             cell.configureCell(thoughty: thoughtsArray[indexPath.row])
             
@@ -94,6 +131,15 @@ class ViewController1: UIViewController, UITableViewDelegate, UITableViewDataSou
             
         } else { return UITableViewCell() } // セルが存在しなかった場合
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // タップしたセルを離した後に非選択に戻す
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
